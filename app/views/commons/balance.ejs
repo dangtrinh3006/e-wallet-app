@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-6 mb-4">
+
+        <div class="card">
+
+            <div class="card-body">
+                <p>Xin chào, <strong><%= user.full_name %></strong></p>
+                <span class="badge bg-primary"><%= user.phone_number %></span>
+                <% if(user.status == 2) { %>
+                    <span class="badge bg-success">Đã xác minh</span>
+                <% } else if(user.status == 3) { %>
+                    <span class="badge bg-danger">Chờ cập nhật</span>
+                <% } else  { %>
+                    <span class="badge bg-danger">Chờ xác minh</span>
+                <% } %>
+                <h3 class="card-title mb-2"><%= user.balance.toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }) %></h3>
+                <!--                                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i>-->
+                <!--                                                +72.80%</small>-->
+                <div class="row">
+                    <div class="col-xl-12 mb-xl-0 mb-3">
+                        <small class="text-light fw-semibold">Chức năng của ví</small>
+                        <div
+                                class="btn-toolbar demo-inline-spacing"
+                                role="toolbar"
+                                aria-label="Toolbar with button groups"
+                        >
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/deposit" class="btn btn-outline-primary">
+                                    <i class="tf-icons bx bx-import"></i>
+                                    Nạp tiền
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/withdraw" class="btn btn-outline-primary">
+                                    <i class="tf-icons bx bx-export"></i>
+                                    Rút tiền
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/transfer" class="btn btn-outline-primary">
+                                    <i class="tf-icons bx bx-transfer-alt"></i>
+                                    Chuyển tiền
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/buy-card" class="btn btn-outline-primary">
+                                    <i class="tf-icons bx bx-id-card"></i>
+                                    Mua thẻ
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/history" class="btn btn-outline-primary">
+                                    <i class="tf-icons bx bx-history"></i>
+                                    Lịch sử giao dịch
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<% if (typeof success !== 'undefined' ) { %>
+    <% if (success == 'true' ) { %>
+        <div class="alert alert-success" role="alert">Thành công</div>
+    <% } %>
+    <br/>
+<% } %>
